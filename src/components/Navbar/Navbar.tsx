@@ -48,6 +48,7 @@ export const Navbar = ({ className, ...props }: NavbarProps) => {
           Walkthroughs
         </NavBarListItemLink>
       </NavBarList>
+
       <NavBarList>
         <NavBarListItemLink href="/user">
           <UserIcon className="w-6 h-6 " />
