@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import {
   HomeIcon,
   GamepadIcon,
@@ -7,42 +7,9 @@ import {
   UserIcon,
 } from "@/components";
 import { cn } from "@/helpers/cn";
-
-type NavbarProps = React.ComponentProps<"nav">;
-type NavbarListProps = React.ComponentProps<"ul">;
-type NavbarListItemProps = React.ComponentProps<"li">;
-
-const NavBarList = ({ children, className, ...props }: NavbarListProps) => {
-  return (
-    <ul
-      {...props}
-      className={
-        (cn("my-4 border-t  border-indigo-400/20 hover:border-indigo-400/40"),
-        className)
-      }
-    >
-      {children}
-    </ul>
-  );
-};
-
-const NavBarListItem = ({
-  children,
-  className,
-  ...props
-}: NavbarListItemProps) => {
-  return (
-    <li
-      {...props}
-      className={cn(
-        "my-2 rounded-lg bg-transparent p-2 hover:bg-indigo-400/40 hover:text-slate-100 cursor-pointer flex items-center gap-2 ",
-        className
-      )}
-    >
-      {children}
-    </li>
-  );
-};
+import { NavbarProps } from "./types";
+import { NavBarList } from "./NavbarList";
+import { NavBarListItemLink } from "./NavbarListItemLink";
 
 export const Navbar = ({ className, ...props }: NavbarProps) => {
   return (
@@ -61,28 +28,28 @@ export const Navbar = ({ className, ...props }: NavbarProps) => {
         />
       </div>
       <NavBarList className="flex-grow">
-        <NavBarListItem>
+        <NavBarListItemLink href="/">
           <HomeIcon className="w-4 h-4" />
           Home
-        </NavBarListItem>
-        <NavBarListItem>
+        </NavBarListItemLink>
+        <NavBarListItemLink href="/games">
           <GamepadIcon className="w-4 h-4" />
           Games
-        </NavBarListItem>
-        <NavBarListItem>
+        </NavBarListItemLink>
+        <NavBarListItemLink href="/top-10">
           <PrizeIcon className="w-4 h-4" />
           Top 10
-        </NavBarListItem>
-        <NavBarListItem>
+        </NavBarListItemLink>
+        <NavBarListItemLink href="/walkthroughs">
           <RouteIcon className="w-4 h-4" />
           Walkthroughs
-        </NavBarListItem>
+        </NavBarListItemLink>
       </NavBarList>
       <NavBarList>
-        <NavBarListItem>
+        <NavBarListItemLink href="/user">
           <UserIcon className="w-6 h-6 " />
           User
-        </NavBarListItem>
+        </NavBarListItemLink>
       </NavBarList>
     </nav>
   );
