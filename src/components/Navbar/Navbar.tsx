@@ -10,6 +10,7 @@ import { cn } from "@/helpers/cn";
 import { NavbarProps } from "./types";
 import { NavBarList } from "./NavbarList";
 import { NavBarListItemLink } from "./NavbarListItemLink";
+import Image from "next/image";
 
 export const Navbar = ({ className, ...props }: NavbarProps) => {
   return (
@@ -20,10 +21,12 @@ export const Navbar = ({ className, ...props }: NavbarProps) => {
       )}
       {...props}
     >
-      <div className="flex items-center justify-center">
-        <img
+      <div className="flex items-center justify-center my-4">
+        <Image
           src="https://emersonbroga.com/e/assets/emersonbroga-logo-name-pink.png"
           alt="Logo EmersonBrogadev"
+          width={112}
+          height={32}
           className="w-auto h-12 p-2"
         />
       </div>
