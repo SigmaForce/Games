@@ -1,4 +1,5 @@
 import { Pagination } from "@/components";
+import { PageWrapper } from "@/components/PageWrapper/PageWrapper";
 import Article from "@/libs/database/Articles";
 import ArticleService from "@/services/Articles";
 import Image from "next/image";
@@ -15,7 +16,7 @@ export default async function Home({
   const latestArticles = await ArticleService.getHomeLatestArticles();
 
   return (
-    <div className="ml-72">
+    <PageWrapper>
       <div className="w-full h-[35vh] bg-orange-400 flex-center">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit qui
@@ -96,6 +97,6 @@ export default async function Home({
           <div className="col-span-4 bg-emerald-500">B</div>
         </div>
       </div>
-    </div>
+    </PageWrapper>
   );
 }
