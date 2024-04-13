@@ -1,4 +1,3 @@
-import { metadata } from "@/app/layout";
 import Games from "@/libs/database/Games";
 
 const GamesService = {
@@ -36,6 +35,10 @@ const GamesService = {
         totalPages,
       },
     };
+  },
+
+  getGameBySlug: async (slug: string) => {
+    return Games.getOne({ where: { slug } });
   },
 };
 

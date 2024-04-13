@@ -3,6 +3,7 @@ import { PageWrapper } from "@/components/PageWrapper/PageWrapper";
 import { getGameImage } from "@/helpers/games";
 import GamesService from "@/services/Games";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Games({
   searchParams,
@@ -21,7 +22,8 @@ export default async function Games({
         <div className="grid grid-cols-4 gap-x-4 gap-y-12">
           {games.data.map((game) => {
             return (
-              <div
+              <Link
+                href={`/games/${game.slug}`}
                 key={game.slug}
                 className="flex-center flex-col relative overflow-hidden"
               >
@@ -35,7 +37,7 @@ export default async function Games({
                   />
                 </div>
                 <p className="pt-2 pb-2 px-2 w-full">{game.title}</p>
-              </div>
+              </Link>
             );
           })}
         </div>
