@@ -4,6 +4,7 @@ import { PageWrapper } from "@/components";
 import ArticleService from "@/services/Articles";
 import GamesService from "@/services/Games";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Home({
   searchParams,
@@ -26,7 +27,8 @@ export default async function Home({
         <div className="grid grid-cols-4 gap-4 h-[35vh]">
           {latestArticles.data.map((article) => {
             return (
-              <div
+              <Link
+                href={`/articles/${article.slug}`}
                 key={article.title}
                 className="flex-center relative overflow-hidden"
               >
@@ -42,7 +44,7 @@ export default async function Home({
                 <p className="absolute bottom-0 pt-6 pb-2 px-2 bg-gradient-to-t from-slate-900 via-slate-800 to-transparent w-full">
                   {article.title}
                 </p>
-              </div>
+              </Link>
             );
           })}
         </div>
@@ -76,9 +78,12 @@ export default async function Home({
                       </h2>
 
                       <p className="flex-grow">{article.excerpt}</p>
-                      <button className="bg-slate-700 hover:bg-indigo-400/40 rounded-lg px-4 py-2 inline max-w-max">
+                      <Link
+                        href={`/articles/${article.slug}`}
+                        className="bg-slate-700 hover:bg-indigo-400/40 rounded-lg px-4 py-2 inline max-w-max"
+                      >
                         Ler mais
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 );
