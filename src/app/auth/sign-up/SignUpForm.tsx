@@ -2,7 +2,7 @@
 
 import { TextInput, SubmitButton } from "@/components";
 import { useFormState } from "react-dom";
-import { SignUpState, handleSignUpForm } from "./actions";
+import { handleSignUpForm, type SignUpState } from "./actions";
 
 const initialState: SignUpState = {
   isValid: undefined,
@@ -16,7 +16,6 @@ const initialState: SignUpState = {
 
 export default function SignUpForm() {
   const [state, formAction] = useFormState(handleSignUpForm, initialState);
-  console.log("🚀 ~ SignUpForm ~ state:", state);
 
   return (
     <form action={formAction}>

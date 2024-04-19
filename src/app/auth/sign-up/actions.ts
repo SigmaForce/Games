@@ -3,6 +3,8 @@
 import { ZodError, z } from "zod";
 
 import UsersService from "@/services/Users";
+import { redirect } from "next/navigation";
+import { getZodErrors } from "@/helpers/zod";
 
 export type SignUpError = {
   name?: string;
@@ -16,23 +18,10 @@ export type SignUpState = {
   errors: SignUpError;
 };
 
-const getZodErros = (error: unknown) => {
-  const isZodError = error instanceof ZodError;
-  if (!isZodError) return null;
-
-  const { fieldErrors } = error.flatten();
-  const errors = Object.keys(fieldErrors).reduce((acc, key) => {
-    const message = fieldErrors[key]?.at(0);
-    return { ...acc, [key]: message };
-  }, {});
-
-  return errors;
-};
-
 const validateSignUpForm = (formData: FormData) => {
   const checkPasswords = (data: any) =>
     data.password === data.passwordConfirmation;
-  const checkPasswordsErros = {
+  const checkPasswordsErrors = {
     message: "Password confirmation doesn't match",
     path: ["passwordConfirmation"],
   };
@@ -46,13 +35,13 @@ const validateSignUpForm = (formData: FormData) => {
         .string()
         .min(10, "Password confirmation must have at least 10 chars"),
     })
-    .refine(checkPasswords, checkPasswordsErros);
+    .refine(checkPasswords, checkPasswordsErrors);
 
   try {
     userSchema.parse(Object.fromEntries(formData));
     return { isValid: true, errors: {} };
   } catch (error: unknown) {
-    const zodErrors = getZodErros(error);
+    const zodErrors = getZodErrors(error);
     return { isValid: false, errors: zodErrors || {} };
   }
 };
@@ -70,6 +59,5 @@ export const handleSignUpForm = async (prevState: any, formData: FormData) => {
   };
 
   const record = await UsersService.signUp(data);
-
-  return { isValid: true, errors: {} };
+  redirect("/");
 };
