@@ -12,7 +12,7 @@ import { NavBarList } from "./NavbarList";
 import { NavBarListItemLink } from "./NavbarListItemLink";
 import Image from "next/image";
 
-export const Navbar = ({ className, ...props }: NavbarProps) => {
+export const Navbar = ({ className, user, ...props }: NavbarProps) => {
   return (
     <nav
       className={cn(
@@ -50,10 +50,17 @@ export const Navbar = ({ className, ...props }: NavbarProps) => {
       </NavBarList>
 
       <NavBarList>
-        <NavBarListItemLink href="/user">
-          <UserIcon className="w-6 h-6 " />
-          User
-        </NavBarListItemLink>
+        {user ? (
+          <NavBarListItemLink href="/user">
+            <UserIcon className="w-6 h-6 " />
+            {user.name}
+          </NavBarListItemLink>
+        ) : (
+          <NavBarListItemLink href="/auth/sign-in">
+            <UserIcon className="w-6 h-6 " />
+            Login
+          </NavBarListItemLink>
+        )}
       </NavBarList>
     </nav>
   );

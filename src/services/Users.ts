@@ -1,4 +1,4 @@
-import { createHash } from "@/helpers/hash";
+import { createHash, verifyHash } from "@/helpers/hash";
 import Users from "@/libs/database/Users";
 import { User } from "@prisma/client";
 
@@ -10,6 +10,16 @@ const UsersService = {
     }
 
     return Users.create({ ...data, password: passwordHash });
+  },
+
+  signIn: async (data: any) => {
+    const record = await Users.findByEmail(data.email);
+    if (!record) return null;
+    const isValidPassword = verifyHash(data.password, record.password);
+
+    if (!isValidPassword) return null;
+
+    return { ...record, password: null };
   },
 };
 

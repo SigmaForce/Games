@@ -58,6 +58,6 @@ export const handleSignUpForm = async (prevState: any, formData: FormData) => {
     password: String(formData.get("password")),
   };
 
-  const record = await UsersService.signUp(data);
+  await UsersService.signUp(data);
   redirect("/");
 };
