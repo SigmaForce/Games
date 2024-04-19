@@ -29,7 +29,7 @@ export default function SignUpForm() {
         error={state.errors.password}
       />
       <TextInput
-        name="PasswordConfirmation"
+        name="passwordConfirmation"
         label="Password confirmation"
         type="password"
         error={state.errors.passwordConfirmation}
