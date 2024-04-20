@@ -6,6 +6,7 @@ import {
   RouteIcon,
   UserIcon,
   FormButton,
+  ExitIcon,
 } from "@/components";
 import { cn } from "@/helpers/cn";
 import { NavbarProps } from "./types";
@@ -13,7 +14,7 @@ import { NavBarList } from "./NavbarList";
 import { NavBarListItemLink } from "./NavbarListItemLink";
 import Image from "next/image";
 import { NavBarListItem } from "./NavbarListItem";
-import { ExitIcon } from "../Icons/icons/ExitIcon";
+
 import { handleSignOutForm } from "@/app/auth/sign-out/actions";
 
 export const Navbar = ({ className, user, ...props }: NavbarProps) => {

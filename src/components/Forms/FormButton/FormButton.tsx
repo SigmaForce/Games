@@ -1,8 +1,8 @@
 import { cn } from "@/helpers/cn";
 
 type FormButtonProps = React.ComponentProps<"button"> & {
-  label?: string | null | undefined;
-  action?: () => void;
+  label?: string | null;
+  action: () => void;
 };
 
 export default function FormButton({
