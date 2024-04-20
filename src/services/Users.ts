@@ -12,7 +12,7 @@ const UsersService = {
     return Users.create({ ...data, password: passwordHash });
   },
 
-  signIn: async (data: any) => {
+  signIn: async (data: Pick<User, "email" | "password">) => {
     const record = await Users.findByEmail(data.email);
     if (!record) return null;
     const isValidPassword = verifyHash(data.password, record.password);
