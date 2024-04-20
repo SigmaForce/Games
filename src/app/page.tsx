@@ -1,5 +1,6 @@
 import { Hero, Pagination } from "@/components";
 import { PageWrapper } from "@/components";
+import { getArticleImage, getArticleUrl } from "@/helpers/articles";
 import { HomeLatestArticles, HomeLatestArticlesSkeleton } from "@/sections";
 
 import ArticleService from "@/services/Articles";
@@ -42,7 +43,7 @@ export default async function Home({
                       <div className="h-40 rounded-r-lg overflow-hidden">
                         <Image
                           className="h-full w-full object-cover transition duration-500 hover:scale-105 rounded-r-lg "
-                          src={`/assets/images/articles/${article.image}`}
+                          src={getArticleImage(article.image)}
                           alt={article.title}
                           width={600}
                           height={400}
@@ -56,7 +57,7 @@ export default async function Home({
 
                       <p className="flex-grow">{article.excerpt}</p>
                       <Link
-                        href={`/articles/${article.slug}`}
+                        href={getArticleUrl(article.slug)}
                         className="bg-slate-700 hover:bg-indigo-400/40 rounded-lg px-4 py-2 inline max-w-max"
                       >
                         Ler mais
@@ -73,7 +74,7 @@ export default async function Home({
               </div>
             </div>
           </div>
-          <div className="col-span-4 bg-emerald-500">B</div>
+          <div className="col-span-4 bg-emerald-500">Session</div>
         </div>
       </div>
     </PageWrapper>
