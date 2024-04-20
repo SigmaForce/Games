@@ -5,12 +5,16 @@ import {
   PrizeIcon,
   RouteIcon,
   UserIcon,
+  FormButton,
 } from "@/components";
 import { cn } from "@/helpers/cn";
 import { NavbarProps } from "./types";
 import { NavBarList } from "./NavbarList";
 import { NavBarListItemLink } from "./NavbarListItemLink";
 import Image from "next/image";
+import { NavBarListItem } from "./NavbarListItem";
+import { ExitIcon } from "../Icons/icons/ExitIcon";
+import { handleSignOutForm } from "@/app/auth/sign-out/actions";
 
 export const Navbar = ({ className, user, ...props }: NavbarProps) => {
   return (
@@ -49,19 +53,25 @@ export const Navbar = ({ className, user, ...props }: NavbarProps) => {
         </NavBarListItemLink>
       </NavBarList>
 
-      <NavBarList>
-        {user ? (
+      {user ? (
+        <NavBarList>
           <NavBarListItemLink href="/user">
             <UserIcon className="w-6 h-6 " />
             {user.name}
           </NavBarListItemLink>
-        ) : (
+          <NavBarListItem>
+            <ExitIcon className="w-6 h-6 " />
+            <FormButton action={handleSignOutForm}>Logout</FormButton>
+          </NavBarListItem>
+        </NavBarList>
+      ) : (
+        <NavBarList>
           <NavBarListItemLink href="/auth/sign-in">
             <UserIcon className="w-6 h-6 " />
             Login
           </NavBarListItemLink>
-        )}
-      </NavBarList>
+        </NavBarList>
+      )}
     </nav>
   );
 };
