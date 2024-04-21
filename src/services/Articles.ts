@@ -40,8 +40,6 @@ const ArticleService = {
   },
 
   getHomeLatestArticles: async () => {
-    await sleep();
-
     const page = 1;
     const limit = HOME_LATEST_COUNT;
     const offset = 0;

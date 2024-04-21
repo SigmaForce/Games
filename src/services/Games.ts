@@ -4,7 +4,6 @@ import Games from "@/libs/database/Games";
 
 const GamesService = {
   getGamesList: async (page = 1, limit = 10) => {
-    await sleep();
     const offset = (page - 1) * limit;
     const data = await Games.get({ limit, offset });
     const total = await Games.count({});
