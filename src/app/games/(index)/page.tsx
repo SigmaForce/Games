@@ -20,7 +20,7 @@ export default async function Games({
       <div className="container mx-auto my-6">
         <h1 className="text-3xl my-6">Games</h1>
         <div className="grid grid-cols-4 gap-x-4 gap-y-12">
-          {games.data.map((game) => {
+          {games.data.map((game: any) => {
             return (
               <Link
                 href={getGameUrl(game.slug)}
