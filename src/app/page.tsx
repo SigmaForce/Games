@@ -74,7 +74,33 @@ export default async function Home({
               </div>
             </div>
           </div>
-          <div className="col-span-4 bg-emerald-500">Session</div>
+          <div className="col-span-4 ">
+            <div className="flex flex-col gap-4">
+              <h3 className="text-2xl ">Populares</h3>
+              {articles.data.slice(0, 7).map((article) => {
+                return (
+                  <Link
+                    href={getArticleUrl(article.slug)}
+                    key={article.title}
+                    className="flex-center relative overflow-hidden rounded-lg"
+                  >
+                    <div className="h-full w-full">
+                      <Image
+                        className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                        src={getArticleImage(article.image)}
+                        alt={article.title}
+                        width={600}
+                        height={400}
+                      />
+                    </div>
+                    <p className="absolute bottom-0 pt-6 pb-2 px-2 bg-gradient-to-t from-slate-900 via-slate-800 to-transparent w-full">
+                      {article.title}
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </PageWrapper>

@@ -28,7 +28,7 @@ export const Navbar = ({ className, user, ...props }: NavbarProps) => {
     >
       <div className="flex items-center justify-center my-4">
         <Image
-          src="https://emersonbroga.com/e/assets/emersonbroga-logo-name-pink.png"
+          src="/Logo.svg"
           alt="Logo EmersonBrogadev"
           width={112}
           height={32}
