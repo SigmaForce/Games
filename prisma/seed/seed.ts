@@ -107,12 +107,26 @@ async function truncateGamesAndGenres() {
   );
 }
 
-main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.log(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+//main()
+//  .then(async () => {
+//    await prisma.$disconnect();
+//  })
+//  .catch(async (e) => {
+//    console.log(e);
+//    await prisma.$disconnect();
+//    process.exit(1);
+//  });
+
+export const truncate = async () => {
+  console.log("Truncating articles");
+  await truncateArticles();
+  console.log("Truncating games and genres");
+  await truncateGamesAndGenres();
+};
+
+export const seed = async () => {
+  console.log("Seeding articles");
+  await seedArticles();
+  console.log("Seeding games and genres");
+  await seedGamesAndGenres();
+};
