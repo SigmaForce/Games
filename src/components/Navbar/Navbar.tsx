@@ -29,7 +29,7 @@ export const Navbar = ({ className, user, ...props }: NavbarProps) => {
       <div className="flex items-center justify-center my-4">
         <Image
           src="/Logo.svg"
-          alt="Logo EmersonBrogadev"
+          alt="Logo Games"
           width={112}
           height={32}
           className="w-auto h-12 p-2"
