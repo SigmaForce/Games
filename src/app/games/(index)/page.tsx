@@ -17,7 +17,7 @@ export default async function Games({
 
   return (
     <PageWrapper>
-      <div className="container mx-auto my-6">
+      <div className="container mx-auto my-6 px-4 lg:px-0">
         <h1 className="text-3xl my-6">Games</h1>
         <div className="grid grid-cols-4 gap-x-4 gap-y-12">
           {games.data.map((game: any) => {
@@ -25,7 +25,7 @@ export default async function Games({
               <Link
                 href={getGameUrl(game.slug)}
                 key={game.slug}
-                className="flex-center flex-col relative overflow-hidden"
+                className="flex-center flex-col relative overflow-hidden lg:col-span-1 col-span-4"
               >
                 <div className="h-full w-full">
                   <Image

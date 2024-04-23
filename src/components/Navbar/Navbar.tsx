@@ -16,63 +16,69 @@ import Image from "next/image";
 import { NavBarListItem } from "./NavbarListItem";
 
 import { handleSignOutForm } from "@/app/auth/sign-out/actions";
+import { NavBarMobile } from "./NavbarMobile";
 
 export const Navbar = ({ className, user, ...props }: NavbarProps) => {
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 flex h-screen flex-col  bg-slate-900 border-r border-indigo-400/20 hover:border-indigo-400/40 w-72 p-2 text-slate-300",
-        className
-      )}
-      {...props}
-    >
-      <div className="flex items-center justify-center my-4">
-        <Image
-          src="/Logo.svg"
-          alt="Logo Games"
-          width={112}
-          height={32}
-          className="w-auto h-12 p-2"
-        />
-      </div>
-      <NavBarList className="flex-grow">
-        <NavBarListItemLink href="/">
-          <HomeIcon className="w-4 h-4" />
-          Home
-        </NavBarListItemLink>
-        <NavBarListItemLink href="/games">
-          <GamepadIcon className="w-4 h-4" />
-          Games
-        </NavBarListItemLink>
-        <NavBarListItemLink href="/top-10">
-          <PrizeIcon className="w-4 h-4" />
-          Top 10
-        </NavBarListItemLink>
-        <NavBarListItemLink href="/walkthroughs">
-          <RouteIcon className="w-4 h-4" />
-          Walkthroughs
-        </NavBarListItemLink>
-      </NavBarList>
+    <>
+      <nav
+        className={cn(
+          "fixed top-0 left-0 lg:flex h-screen flex-col  bg-slate-900 border-r border-indigo-400/20 hover:border-indigo-400/40 w-72 p-2 text-slate-300 hidden",
+          className
+        )}
+        {...props}
+      >
+        <div className="flex items-center justify-center my-4">
+          <Image
+            src="/Logo.svg"
+            alt="Logo Games"
+            width={112}
+            height={32}
+            className="w-auto h-12 p-2"
+          />
+        </div>
+        <NavBarList className="flex-grow">
+          <NavBarListItemLink href="/">
+            <HomeIcon className="w-4 h-4" />
+            Home
+          </NavBarListItemLink>
+          <NavBarListItemLink href="/games">
+            <GamepadIcon className="w-4 h-4" />
+            Games
+          </NavBarListItemLink>
+          <NavBarListItemLink href="/top-10">
+            <PrizeIcon className="w-4 h-4" />
+            Top 10
+          </NavBarListItemLink>
+          <NavBarListItemLink href="/walkthroughs">
+            <RouteIcon className="w-4 h-4" />
+            Walkthroughs
+          </NavBarListItemLink>
+        </NavBarList>
 
-      {user ? (
-        <NavBarList>
-          <NavBarListItemLink href="/user">
-            <UserIcon className="w-6 h-6 " />
-            {user.name}
-          </NavBarListItemLink>
-          <NavBarListItem>
-            <ExitIcon className="w-6 h-6 " />
-            <FormButton action={handleSignOutForm}>Logout</FormButton>
-          </NavBarListItem>
-        </NavBarList>
-      ) : (
-        <NavBarList>
-          <NavBarListItemLink href="/auth/sign-in">
-            <UserIcon className="w-6 h-6 " />
-            Login
-          </NavBarListItemLink>
-        </NavBarList>
-      )}
-    </nav>
+        {user ? (
+          <NavBarList>
+            <NavBarListItemLink href="/user">
+              <UserIcon className="w-6 h-6 " />
+              {user.name}
+            </NavBarListItemLink>
+            <NavBarListItem>
+              <ExitIcon className="w-6 h-6 " />
+              <FormButton action={handleSignOutForm}>Logout</FormButton>
+            </NavBarListItem>
+          </NavBarList>
+        ) : (
+          <NavBarList>
+            <NavBarListItemLink href="/auth/sign-in">
+              <UserIcon className="w-6 h-6 " />
+              Login
+            </NavBarListItemLink>
+          </NavBarList>
+        )}
+      </nav>
+      <nav className="h-20 w-full flex items-center justify-between px-4 fixed top-0 z-50 bg-slate-900 backdrop-blur-md lg:hidden">
+        <NavBarMobile />
+      </nav>
+    </>
   );
 };

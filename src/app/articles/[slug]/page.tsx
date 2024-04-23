@@ -19,8 +19,8 @@ export default async function ArticleDetailPage({
 
   return (
     <PageWrapper>
-      <div className="container mx-auto my-6">
-        <div className="w-2/3">
+      <div className="container mx-auto my-6 px-4 lg:px-0">
+        <div className="lg:w-2/3 w-full">
           <h1 className="text-3xl my-6">{article.title}</h1>
           <Image
             className="my-6 h-full w-full object-cover rounded-lg "

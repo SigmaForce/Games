@@ -6,16 +6,16 @@ import Link from "next/link";
 export default async function HomeLatestArticles() {
   const latestArticles = await ArticleService.getHomeLatestArticles();
   return (
-    <div className="container mx-auto my-10">
+    <div className="container mx-auto my-10 px-4 lg:px-0">
       <h2 className="text-3xl my-6 underline">Latest Articles</h2>
 
-      <div className="grid grid-cols-4 gap-4 h-[35vh]">
+      <div className="grid grid-cols-4 gap-4 lg:h-[35vh] h-auto">
         {latestArticles.data.map((article) => {
           return (
             <Link
               href={getArticleUrl(article.slug)}
               key={article.title}
-              className="flex-center relative overflow-hidden"
+              className="flex-center relative z-0 overflow-hidden col-span-4 lg:col-span-1 h-[256px] lg:h-auto"
             >
               <div className="h-full w-full">
                 <Image

@@ -50,20 +50,22 @@ type HeroType = {
 
 export const Hero = ({ games }: HeroType) => {
   return (
-    <div className="container mx-auto my-6 h-[42vh]  flex-center">
+    <div className="container mx-auto my-6 h-[42vh]  flex  justify-center items-center">
       <div className="flex-center">
         <div className="flex-col flex-center">
           <Image
             src="/assets/images/nintendo-64-logo.png"
             alt="Nintendo 64 Logo"
-            width={230}
+            width={210}
             height={150}
           />
-          <h1 className="text-4xl my-6">The best Nintendo 64 fan website</h1>
+          <h1 className="text-4xl my-6 text-center lg:text-start">
+            The best Nintendo 64 fan website
+          </h1>
         </div>
       </div>
       <div
-        className="ml-auto w-auto h-full border border-slate-700 p-2 rounded-lg"
+        className="ml-auto w-auto h-full border border-slate-700 p-2 rounded-lg hidden lg:block"
         style={style}
       >
         <div className="flex h-full overflow-hidden gap-2">

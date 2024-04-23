@@ -19,10 +19,10 @@ export default async function GameDetailPage({
   return (
     <PageWrapper>
       <div className="container mx-auto my-6">
-        <div className="w-2/3">
+        <div className="lg:w-2/3 w-full px-4 lg:px-0">
           <h1 className="text-3xl my-6">{game.title}</h1>
           <Image
-            className="my-6 h-full w-full object-cover rounded-lg "
+            className="my-6 lg:h-full w-full object-cover rounded-lg "
             src={getGameImage(game.image)}
             alt={game.title}
             width={600}

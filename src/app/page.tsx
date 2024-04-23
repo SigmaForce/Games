@@ -28,19 +28,19 @@ export default async function Home({
         <HomeLatestArticles />
       </Suspense>
 
-      <div className="container mx-auto my-10">
+      <div className="container mx-auto my-10 px-4 lg:px-0">
         <h3 className="text-2xl my-6">Articles</h3>
         <div className="grid grid-cols-12 gap-4">
-          <div className="col-span-8">
+          <div className="lg:col-span-8 col-span-12">
             <div className="flex flex-col gap-4">
               {articles.data.map((article) => {
                 return (
                   <div
                     key={article.title}
-                    className="flex bg-slate-800 rounded-md py-4"
+                    className="flex bg-slate-800 rounded-md py-4 lg:flex-row flex-col"
                   >
                     <div className="flex items-center">
-                      <div className="h-40 rounded-r-lg overflow-hidden">
+                      <div className="h-40 rounded-r-lg overflow-hidden flex justify-center items-center w-full lg:w-auto">
                         <Image
                           className="h-full w-full object-cover transition duration-500 hover:scale-105 rounded-r-lg "
                           src={getArticleImage(article.image)}
@@ -74,7 +74,7 @@ export default async function Home({
               </div>
             </div>
           </div>
-          <div className="col-span-4 ">
+          <div className="lg:col-span-4 col-span-12 hidden lg:block">
             <div className="flex flex-col gap-4">
               <h3 className="text-2xl ">Populares</h3>
               {articles.data.slice(0, 7).map((article) => {
